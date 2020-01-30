@@ -1,0 +1,49 @@
+<div class="modal-header">
+    <h4 class="modal-title">Book to Cell</h4>
+    <button type="button" class="fa fa-times " aria-label="Close"
+     (click)="activeModal.dismiss('Cross click')">
+    </button>
+  </div>
+  <div class="modal-body">
+      <div class="card-body pt-0 widget-body"> 
+             
+          <form [formGroup] = "form">
+              <div class="form-group">
+                  <label for="cellid">Select Cell</label>
+                  <select formControlName = "cellid" type="text" class="form-control" id="cellid" value="cellid" >
+                      <option *ngFor="let cell of cells" [ngValue]="cell.stationcellid">
+                          {{ cell.cellname }}
+                      </option>
+                  </select> 
+                  <small class="text-danger" *ngIf="form.get('cellid').touched && form.get('cellid').hasError('required')">Cell Name Required
+                  </small> 
+            </div>
+              <!-- <div class="form-group">
+                  <label for="input-2">Select </label>
+                  <input formControlName = "username" type="text" class="form-control" id="cellname">
+              </div> -->
+              <div class="form-group">
+                <label for="caseid">Case ID</label>
+                <input formControlName = "caseid" type="text" class="form-control" id="caseid" disabled>
+                <small class="text-danger" *ngIf="form.get('caseid').touched && form.get('caseid').hasError('required')">Case Field Required
+                  </small> 
+                   
+            </div>
+              <!-- <div class="form-group">
+                  <label for="celltype">Role</label>
+                <select formControlName = "attachedrole" class="browser-default custom-select">
+                        <option>Investigating Officer</option>
+                        <option>Witness</option>
+                        <option>Complainant</option>
+                        <option>Defendant</option>
+                </select>
+              </div> -->
+          </form>
+      </div>
+  </div>
+  <div class="modal-footer">
+      <button class="btn btn-danger" (click)="closeModal()">Cancel</button>&nbsp;
+    <button class="btn btn-primary" (click)="bookToCell()">
+      Submit
+    </button>
+  </div>

@@ -1,0 +1,18 @@
+[
+    {
+        "cellId": 1,
+        "cellClass": "Juvinile"
+    },
+    {
+        "cellId": 2,
+        "cellClass": "male"
+    },
+    {
+        "cellId": 3,
+        "cellClass": "female"
+    },
+    {
+        "cellId": 4,
+        "cellClass": "Adult"
+    }
+]

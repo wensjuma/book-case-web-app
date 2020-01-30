@@ -1,0 +1,32 @@
+<div class="modal-header">
+  <h4 class="modal-title">Add Case Type</h4>
+  <button type="button" class="close" aria-label="Close"  class="fa fa-times"
+   (click)="activeModal.dismiss('Cross click')">
+  </button>
+</div>
+<form [formGroup]="form">
+  <div class="modal-boy">
+    <div class="container">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" 
+          class="form-control"
+          formControlName="name" />
+          <small class="text-danger"
+              *ngIf="form.get('name').touched && form.get('name').hasError('required')">Required
+              Field</small>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+      <div *ngIf="loading" class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+              aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+      </div>     
+  </div>
+  <div class="modal-footer">
+    <!-- <button class="btn btn-success" [disabled]="!myForm.valid"> Submit </button> -->
+    <button type="button" class="btn btn-primary" (click)="activeModal.close('Close click')">Close</button>
+    <button [disabled]="!form.valid" type="button" class="btn  btn-md btn-primary" (click)="submitData()">Save Record</button>
+  </div>
+</form>

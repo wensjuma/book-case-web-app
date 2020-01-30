@@ -1,0 +1,39 @@
+[
+    {
+        "cellId": 1,
+        "name": "Nyati",
+        "cellType": "Women",
+        "cellClass": "Juvinile"
+      },
+      {
+        "cellId": 2,
+        "name": "Simba",
+        "cellType": "Men",
+        "cellClass": "Juvinile"
+      },
+      {
+        "cellId": 3,
+        "name": "Twiga",
+        "cellType": "Men",
+        "cellClass": "Adult"
+      },
+      {
+        "cellId": 4,
+        "name": "Fisi",
+        "cellType": "Women",
+        "cellClass": "Adult"
+      },
+      {
+        "cellId": 5,
+        "name": "Ndovu",
+        "cellType": "Men",
+        "cellClass": "Men"
+      },
+      {
+        "cellId": 6,
+        "name": "Kifaru",
+        "cellType": "Women",
+        "cellClass": "Men"
+      }
+
+]

@@ -1,0 +1,238 @@
+<div class="container">
+  <div class="modal-header">
+    <h4 class="modal-title">Add Case Member </h4>
+    <button type="button" class="fa fa-times" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    </button>
+  </div>
+
+  <form  [formGroup]="caseMemberForm" class="row bg-light pt-2">
+                    
+    <div class="form-group col-md-6"
+        [ngClass]="{'has-danger' : hasErrors && caseMemberForm.get('fullname').hasErrors('required'), 'has-success' : !caseMemberForm.get('fullname').hasErrors('required') }">
+        <label class="form-control-label">Full Name</label>
+        <input formControlName="fullname" class="form-control"
+            [ngClass]="{'form-control-danger' :  caseMemberForm.get('fullname').hasErrors('required'), 'form-control-success' :  !caseMemberForm.get('fullname').hasErrors('required') }"
+            type="text">
+        <small class="text-danger"
+            *ngIf="hasErrors && caseMemberForm.get('fullname').hasErrors('required')">Fullname
+            is required</small>
+    </div>
+  
+    <div class="form-group col-md-6"
+        [ngClass]="{'has-danger' : hasErrors && caseMemberForm.get('idnumber').hasErrors('required'), 'has-success' : !caseMemberForm.get('idnumber').hasErrors('required') }">
+        <label class="form-control-label">ID Number</label>
+        <input formControlName="idnumber" class="form-control"
+            [ngClass]="{'form-control-danger' :  caseMemberForm.get('idnumber').hasErrors('required'), 'form-control-success' :  !caseMemberForm.get('idnumber').hasErrors('required') }"
+            type="number">
+        <small class="text-danger"
+            *ngIf="hasErrors && caseMemberForm.get('idnumber').hasErrors('required')">ID number
+            is required</small>
+    </div>
+  
+    <div class="form-group col-md-6">
+        <label class="form-control-label">Gender</label>
+        <select formControlName="gender" class="form-control">
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+    </div>
+  
+    <div class="form-group col-md-6"
+        [ngClass]="{'has-danger' : (hasErrors && caseMemberForm.get('email').hasErrors('required')) || (hasErrors && caseMemberForm.get('email').hasErrors('email')), 
+                                                 'has-success' : !caseMemberForm.get('email').hasErrors('required') && !caseMemberForm.get('email').hasErrors('email')}">
+        <label class="form-control-label">Contact email</label>
+        <div class="input-group">
+            <div class="input-group-prepend"><span class="input-group-text"><i
+                        class="fa fa-envelope"></i></span></div>
+            <input formControlName="email" class="form-control"
+                [ngClass]="{'form-control-danger' : (hasErrors && caseMemberForm.get('email').hasErrors('required')) || (hasErrors && caseMemberForm.get('email').hasErrors('email')), 
+                                                                            'form-control-success' :  !caseMemberForm.get('email').hasErrors('required') && !caseMemberForm.get('email').hasErrors('email')}"
+                type="email">
+        </div>
+        <small class="text-danger"
+            *ngIf="hasErrors && caseMemberForm.get('email').hasErrors('required')">Email is
+            required</small>
+        <small class="text-danger"
+            *ngIf="hasErrors && caseMemberForm.get('email').hasErrors('email')">Invalid email
+            address</small>
+    </div>
+  
+    <div class="form-group col-md-6"
+        [ngClass]="{'has-danger' : hasErrors && caseMemberForm.get('phone').hasErrors('required'), 'has-success' : !caseMemberForm.get('phone').hasErrors('required') }">
+        <label class="form-control-label">Phone</label>
+        <div class="input-group">
+            <div class="input-group-prepend"><span class="input-group-text"><i
+                        class="fa fa-phone"></i></span></div>
+            <input formControlName="phone" class="form-control"
+                [ngClass]="{'form-control-danger' :  caseMemberForm.get('phone').hasErrors('required'), 'form-control-success' :  !caseMemberForm.get('phone').hasErrors('required') }"
+                type="string">
+        </div>
+        <small class="text-danger"
+            *ngIf="hasErrors && caseMemberForm.get('phone').hasErrors('required')">Phone is
+            required</small>
+    </div>
+  
+    <div class="form-group col-md-6"
+        [ngClass]="{'has-danger' : hasErrors && caseMemberForm.get('age').hasErrors('required'), 'has-success' : !caseMemberForm.get('age').hasErrors('required') }">
+        <label class="form-control-label">Age</label>
+        <input formControlName="age" class="form-control"
+            [ngClass]="{'form-control-danger' :  caseMemberForm.get('age').hasErrors('required'), 'form-control-success' :  !caseMemberForm.get('age').hasErrors('required') }"
+            type="number">
+        <small class="text-danger"
+            *ngIf="hasErrors && caseMemberForm.get('age').hasErrors('required')">required</small>
+    </div>
+  
+    <div class="form-group col-md-6"
+        [ngClass]="{'has-danger' : hasErrors && caseMemberForm.get('county').hasErrors('required'), 'has-success' : !caseMemberForm.get('county').hasErrors('required') }">
+        <label class="form-control-label">Select County</label>
+        <select formControlName="county" class="form-control"
+            [ngClass]="{'form-control-danger' : hasErrors && caseMemberForm.get('county').hasErrors('required'), 'form-control-success' : !caseMemberForm.get('county').hasErrors('required') }">
+            <option *ngFor="let county of counties" [value]="county.id">{{county.name}}</option>
+        </select>
+        <small class="text-danger"
+            *ngIf="hasErrors && caseMemberForm.get('county').hasErrors('required')">county is
+            required</small>
+    </div>
+  
+    <div class="form-group col-md-6"
+        [ngClass]="{'has-danger' : hasErrors && caseMemberForm.get('subcounty').hasErrors('required'), 'has-success' : !caseMemberForm.get('subcounty').hasErrors('required') }">
+        <label class="form-control-label">Select Subcounty</label>
+        <select formControlName="subcounty" class="form-control">
+            <option *ngFor="let subcounty of subcounties" [value]="subcounty">{{subcounty}}</option>
+        </select>
+    </div>
+  
+    <div class="form-group col-md-12">
+        <label class="form-control-label">Address</label>
+        <textarea formControlName="address" class="form-control"></textarea>
+    </div>
+  
+ 
+  <div class="col-md-12">
+    <div *ngIf="loading" class="progress">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+        aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+    </div>
+    <hr class="text-primary">
+    <div class="form-group pull-right">
+      <button class="btn btn-outline-danger" (click)="closeModal()">Cancel</button>&nbsp;
+    <button class="btn btn-outline-primary" (click)="createCaseMember()">Submit</button>
+    </div>
+  </div>
+  </form>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- <div class="modal-header">
+    <h4 class="modal-title">Add Case Member </h4>
+    <button type="button" class="fa fa-times" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="card-body pt-0 widget-body">
+  
+      <div [formGroup]="form">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="fullname">Full Name</label>
+              <input formControlName="fullname" type="text" class="form-control" id="fullname">
+              <small class="text-danger"
+                *ngIf="form.get('fullname').touched && form.get('fullname').hasErrors('required')">Required
+                Field</small>
+            </div>
+            <div class="form-group">
+              <label for="idnumber">National ID</label>
+              <input formControlName="idnumber" type="text" class="form-control form-control-rounded" id="idnumber"
+                value="idnumber">
+              <small class="text-danger"
+                *ngIf="form.get('idnumber').touched && form.get('idnumber').hasErrors('required')">Required
+                Field</small>
+            </div>
+            <div class="form-group">
+              <label for="gender">Gender</label>
+              <select formControlName="gender" type="text" class="form-control" id="gender" value="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+              <small class="text-danger"
+                *ngIf="form.get('gender').touched && form.get('gender').hasErrors('required')">Required
+                Field</small>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input formControlName="email" type="text" class="form-control" id="email" value="email">
+              <small class="text-danger"
+                *ngIf="form.get('email').touched && form.get('email').hasErrors('required')">Required
+                Field</small>
+              <small class="text-danger" *ngIf="form.get('email').touched && form.get('email').hasErrors('email')">Enter a
+                valid email address </small>
+  
+  
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input formControlName="phone" type="text" class="form-control" id="phone" value="phone">
+              <small class="text-danger"
+                *ngIf="form.get('phone').touched && form.get('phone').hasErrors('required')">Required
+                Field</small>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="age">Age</label>
+              <input formControlName="age" type="text" class="form-control form-control-rounded" id="age" value="age">
+              <small class="text-danger" *ngIf="form.get('age').touched && form.get('age').hasErrors('required')">Required
+                Field</small>
+            </div>
+  
+  
+            <div class="form-group "
+              [ngClass]="{'has-danger' : hasErrors && form.get('county').hasErrors('required'), 'has-success' : !form.get('county').hasErrors('required') }">
+              <label class="form-control-label">Select County</label>
+              <select formControlName="county" class="form-control"
+                [ngClass]="{'form-control-danger' :  form.get('county').hasErrors('required'), 'form-control-success' : !form.get('county').hasErrors('required') }">
+                <option *ngFor="let county of counties" [value]="county.id">{{county.name}}</option>
+              </select>
+              <!-- <small class="text-danger"
+                  *ngIf="hasErrors && form.get('county').hasErrors('required')">county is
+                  required</small> 
+            </div>
+  
+            <div class="form-group"
+              [ngClass]="{'has-danger' : hasErrors && form.get('subcounty').hasErrors('required'), 'has-success' : !form.get('subcounty').hasErrors('required') }">
+              <label class="form-control-label">Select Subcounty</label>
+              <select formControlName="subcounty" class="form-control">
+                <option *ngFor="let subcounty of subcounties" [value]="subcounty">{{subcounty}}</option>
+              </select>
+            </div>
+  
+            <div class="form-group ">
+              <label class="form-control-label">Address</label>
+              <textarea formControlName="address" class="form-control"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer col-md-12" >
+              <div *ngIf="loading" class="progress">
+                  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+                    aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+                </div>
+            <button class="btn btn-outline-danger" (click)="closeModal()">Cancel</button>&nbsp;
+            <button class="btn btn-outline-primary" (click)="submitData()">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+</div>

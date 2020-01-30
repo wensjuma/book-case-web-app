@@ -1,0 +1,61 @@
+<div class="modal-header">
+  <h4 class="modal-title">Create Court</h4>
+  <button type="button" class="close" class="fa fa-times" aria-label="Close"
+   (click)="activeModal.dismiss('Cross click')">
+  </button>
+</div>
+<div class="modal-body">
+  <div class="card-body pt-0 widget-body"> 
+             
+    <form>
+        <div [formGroup] = "form">
+          <div class="form-group">
+              <label for="input-2">Court Name</label>
+              <input formControlName = "courtname" type="text" class="form-control" id="courtname">
+              <small class="text-danger"
+              *ngIf="form.get('courtname').touched && form.get('courtname').hasError('required')">Required
+              Field</small>
+          </div>
+          <div class="form-group">
+              <label for="casename">Select Court Type</label>
+              <select formControlName = "courttype" type="text" class="form-control" id="courttype" value="courttype" >
+                  <option *ngFor="let court of courts" [value]="court.courttypeid">
+                      {{ court.courttype }}
+                  </option>
+              </select> 
+              <small class="text-danger"
+              *ngIf="form.get('courttype').touched && form.get('courttype').hasError('required')">Required
+              Field</small>
+           </div>
+           <div class="form-group" >
+              <label class="form-control-label">Select County</label>
+              <select formControlName="county" class="form-control">
+                      <option *ngFor="let county of counties" [value]="county.id">{{county.name}}</option>
+              </select>
+              <small class="text-danger"
+              *ngIf="form.get('county').touched && form.get('county').hasError('required')">Required
+              Field</small>
+          </div>
+
+          <div class="form-group">
+              <label class="form-control-label">Select Subcounty</label>
+              <select formControlName="subcounty" class="form-control">
+                  <option *ngFor="let subcounty of subcounties" [value]="subcounty">{{subcounty}}</option>
+              </select>
+              <small class="text-danger"
+              *ngIf="form.get('subcounty').touched && form.get('subcounty').hasError('required')">Required
+              Field</small>
+          </div>
+        </div>
+
+    </form>
+</div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-danger" (click)="closeModal()">
+        Close
+      </button>
+  <button class="btn btn-primary" (click)="submitData()">
+    Submit
+  </button>
+</div>

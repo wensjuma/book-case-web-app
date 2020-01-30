@@ -1,0 +1,132 @@
+<div class="row mb-1">
+    <div class="col">
+        <div class="input-group mb-3 box-shadow">
+            <div class="input-group-append col-md-offset-8">
+                <!-- <span (click)="opensModal(null)" class="input-group-text border-top-0 border-right-0 border-bottom-0">
+                    <button class="btn btn-md btn-default disabled">Book to Cell </button>
+                </span> -->
+                
+                <span class="input-group-text border-top-0 border-right-0 border-bottom-0"><i
+                        class="fa fa-th"></i></span>
+                <span class="input-group-text border-top-0 border-right-0 border-bottom-0"><i
+                        class="fa fa-list"></i></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12" *ngFor="let _arrested of arrested">
+        <div class="col-sm-12">
+            <div class="flip">
+                <div class="content">
+                    <div class="front">
+                        <div class="card border-0 box-shadow rounded-0" *ngIf="_arrested.arrestdetails">
+                            <div class="card-header border-0 rounded-0 text-muted">
+                                <h5 class="mb-0">
+                                </h5>
+                                <div class="widget-controls">
+                                </div>
+                            </div>
+                            <div class="card-body">
+
+                                <div class="media">
+                                    <div class="d-flex flex-column justify-content-center">
+
+                                    </div>
+                                    <div class="media-body col-sm-8">
+                                        <div class="row">
+
+
+                                            <div class="container">
+                                                <h5 class="text-info">Defendant {{ _arrested.casememberid}}</h5>
+                                                <h6>Full Name</h6>
+                                                {{ _arrested.name }}
+                                                <h6>ID Number</h6>
+                                                {{ _arrested.nationalid }}
+                                                <h6>Gender</h6>
+                                                {{ _arrested.gender }}
+                                                <h6>Email</h6>
+                                                {{ _arrested.email }}
+                                                <h6>Phone</h6>
+                                                {{_arrested.phonenumber }}
+                                                <h6>Age</h6>
+                                                {{ _arrested.age }}
+                                            </div>
+                                        </div>
+                                        <hr>
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="back">
+                    <div class="card border-0 box-shadow rounded-0">
+                        <div class="card-header border-0 rounded-0 text-muted">
+                            <div class="widget-controls"> 
+                                 <a  href="javascript:void(0);" class="transition"><i class="fa fa-times"></i></a> 
+                                <button type="button" class="btn btn-primary w-100p mb-1 mr-1">Primary</button>
+                                <button type="button" class="btn btn-primary w-100p mb-1 mr-1">Primary</button>
+
+                            </div>        
+                        </div>
+                        <div class="card-body pt-3">            
+
+                            <div class="w-100 text-center pt-3">
+
+                            </div>                            
+                        </div>
+                    </div>
+                </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="bg-white text-center">
+            <pagination-controls autoHide="true" maxSize="3"></pagination-controls>
+        </div>
+    </div>
+</div>
+
+<ng-template #modalContent>
+    <div class="modal-body bg-gray">
+        <div class="row">
+            <div class="col-12 vertical-tabs">
+                <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="row px-3">
+                    <ul class="nav flex-column left col-3 border-0 rounded-0 mr-0 bg-light">
+                        <img *ngIf="user.profile.image" class="w-100" [src]="user.profile.image">
+                        <img *ngIf="!user.profile.image" class="w-100" src="assets/img/users/default-user.jpg">
+                        <li class="nav-item bg-light">
+                            <a class="nav-link active" href="#basic" data-toggle="tab">Basic</a>
+                        </li>
+                        <li class="nav-item bg-light">
+                            <a class="nav-link" href="#personal" data-toggle="tab">Personal</a>
+                        </li>
+                        <li class="nav-item bg-light">
+                            <a class="nav-link" href="#work" data-toggle="tab">Work</a>
+                        </li>
+                        <li class="nav-item bg-light">
+                            <a class="nav-link" href="#contacts" data-toggle="tab">Contacts</a>
+                        </li>
+                        <li class="nav-item bg-light">
+                            <a class="nav-link" href="#social" data-toggle="tab">Social life</a>
+                        </li>
+                        <li class="nav-item bg-light">
+                            <a class="nav-link" href="#settings" data-toggle="tab">Settings</a>
+                        </li>
+                    </ul>
+                    <div class="col-12 bg-white text-center py-1">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</ng-template>

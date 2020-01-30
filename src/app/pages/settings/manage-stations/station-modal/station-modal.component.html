@@ -1,0 +1,50 @@
+<div class="modal-header">
+    <h4 class="modal-title">Create Police Station</h4>
+    <button type="button" class="close" class="fa fa-times" aria-label="Close"
+     (click)="activeModal.dismiss('Cross click')">
+    </button>
+  </div>
+  <div [formGroup]="form" >
+    <div class="modal-body">
+      <div class="card-body pt-0 widget-body">   
+              <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control"  formControlName="stationname"   autocomplete="stationname" >
+                  <small class="text-danger"
+                  *ngIf="form.get('stationname').touched && form.get('stationname').hasError('required')">Required
+                  Field</small>
+              </div>
+
+              <div class="form-group">
+                <label for="input">Location</label>
+                <input type="text" class="form-control" formControlName="location"  autocomplete="location" >
+                <small class="text-danger"
+                *ngIf="form.get('location').touched && form.get('location').hasError('required')">Required
+                Field</small>
+              </div>
+              <div class="form-group">
+                  <label for="select_county">Select County</label>
+                <select id="select_county" formControlName="county"  class="browser-default custom-select" (ngModelChange) = "loadSubCounties($event)">
+                  <option *ngFor="let county of counties" [value]="county.id">{{county.name}}</option>
+                </select>
+                <small class="text-danger"
+                *ngIf="form.get('county').touched && form.get('county').hasError('required')">Required
+                Field</small>
+              </div>
+              <div class="form-group">
+                  <label for="subcounty">Select SubCounty</label>
+                <select formControlName="subcounty"  class="browser-default custom-select">
+                  <option *ngFor="let subcounty of subcounties" [value]="subcounty">{{subcounty}}</option>                                
+                </select>
+                <small class="text-danger"
+                *ngIf="form.get('subcounty').touched && form.get('subcounty').hasError('required')">Required
+                Field</small>
+              </div>
+      </div>
+  </div>
+</div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+      <button [disabled]="!form.valid" type="button" class="btn  btn-md btn-primary" (click)="submitData()">Save Record</button>
+      <button *ngIf="formData"  type="button" class="btn  btn-md btn-success" (click)="saveChanges()">Save Changes</button>
+  </div>

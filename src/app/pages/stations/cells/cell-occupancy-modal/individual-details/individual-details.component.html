@@ -1,0 +1,60 @@
+<div class="container">
+  
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="flip">
+        <div class="content">
+          <div class="front">
+            <!--define the loop-->
+
+            <div *ngIf="individualData" class="card border-0 box-shadow rounded-0">
+              <div class="card-header border-0 rounded-0 text-muted">
+
+                <div class="widget-controls">
+                </div>
+              </div>
+              <div class="card-body">
+
+                <div class="media">
+                  <div class="d-flex flex-column justify-content-center">
+                  </div>
+                  <div class="media-body col-sm-12">
+                    <div class="row">
+                      <div class="container" style="text-align: center !important;">
+                        <b><small>
+                            <h5 class="text-primary">Member Details</h5>
+                          </small></b>
+                        <hr>
+                        <h6>Arrest Details</h6>                 
+                        <span *ngIf="individualData.arrestdetails.released===false"
+                          class="badge badge-pill badge-danger">
+                          InCustody </span> <br>
+                         Station Cell {{ individualData.arrestdetails.cellid }}
+                        <hr>
+                        <h6>OB Number</h6>
+                        {{  individualData.caseid }}
+                        <h6>Full Name </h6>
+                        {{  individualData.name }}
+                        <h6>National ID</h6>
+                        {{ individualData.nationalid }}
+                        <h6>Email</h6>
+                        {{ individualData.email }}
+                        <h6>Phone</h6>
+                        {{  individualData.phonenumber }}
+                        <h6>Member ID</h6>
+                        {{  individualData.casememberid }}
+                        <h6>Age</h6>
+                        {{  individualData.age }}
+                        <hr>
+                        <span class="pull-right"><button (click)="closeModal()" class="btn btn-outline-danger">&nbsp;Exit&nbsp;</button></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

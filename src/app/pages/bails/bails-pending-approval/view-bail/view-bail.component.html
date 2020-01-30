@@ -1,0 +1,69 @@
+<div class="col-sm-6" *ngFor="let bail of defendantDetails">
+  <div class="container">
+    <div class="flip">
+      <div class="content">
+        <div class="front">
+          <!--define the loop-->
+         
+          <div>
+            <!-- <button data-toggle="collapse" data-target="#defendant_details" aria-expanded="false"
+                          aria-controls="defendant_details" class="btn btn-info">View Details</button> -->
+            <div class="card border-0 box-shadow rounded-0" *ngIf= "bail.arrestdetails">
+                
+              <div class="card-header border-0 rounded-0 text-muted">
+                <h5 class="mb-0">
+                </h5>
+                <div class="widget-controls">
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="media">
+                  <div class="d-flex flex-column justify-content-center">
+                  </div>
+                  <div class="media-body col-sm-12">
+  
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <b><small>
+                            <h5 class="text-info"> Details</h5>
+                          </small></b>
+                        <h6>Full Name</h6>
+                        {{ bail.name }}
+                        <h6>National ID</h6>
+                        {{ bail.nationalid }}
+                        <h6>Phone </h6>
+                        {{  bail.phonenumber }}
+                        <h6>Email</h6>
+                        {{  bail.email }}
+                        <h6>Age</h6>
+                        {{  bail.age }}
+                      </div>
+  
+                    </div>
+  
+  
+                    <hr>
+                    <!-- <span class="pull-right"><button 
+                                          class="btn btn-danger btn-sm pull-right" (click)="removeMember()"><i class="fa fa-trash"></i> Remove Member</button></span>
+                              
+                              -->
+                    <div>
+                      <span (click)="approveBail($event)" class="pull-left">
+                        <button class="btn btn-sm btn-success"><i class="fa fa-diamond">&nbsp;</i>Approve</button></span>
+                    </div>
+  
+                    <span class="pull-right"><button class="btn btn-info btn-sm pull-right"
+                        (click)="rejectBail($event)"><i class="fa fa-close"></i>&nbsp;Reject</button></span>
+  
+                  </div>
+                </div>
+  
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

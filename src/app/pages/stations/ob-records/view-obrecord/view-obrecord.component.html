@@ -1,0 +1,301 @@
+<div class="row mb-1">
+    <div class="col">
+        <div class="input-group mb-3 box-shadow">
+            <div class="input-group-append col-md-offset-8">
+                <span class="input-group-text border-top-0 border-right-0 border-bottom-0">
+                    <button class="btn btn-md btn-default disabled text-primary"><b>Case Members Awaiting Book to
+                            Cell</b> </button>
+                </span>
+                <span class="input-group-text border-top-0 border-right-0 border-bottom-0">
+                    <!-- <button class="btn btn-md btn-success" (click)="modalAddCaseMember(caseDetails)"><span
+                            class="fa fa-plus">Add
+                            Case Member</span></button> -->
+                </span>
+                <span class="input-group-text border-top-0 border-right-0 border-bottom-0"><i
+                        class="fa fa-th"></i></span>
+                <span class="input-group-text border-top-0 border-right-0 border-bottom-0"><i
+                        class="fa fa-list"></i></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="flip">
+            <div class="content">
+                <div class="front">
+                    <!--define the loop-->
+                    <h5>Case</h5>
+                    <div *ngIf="caseData" class="card border-0 box-shadow rounded-0">
+                        <div class="card-header border-0 rounded-0 text-muted">
+                            <h5 class="mb-0">
+                            </h5>
+                            <div class="widget-controls">
+                            </div>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="media">
+                                <div class="d-flex flex-column justify-content-center">
+                                </div>
+                                <div class="media-body col-sm-12">
+                                    <div class="row">
+                                        <div class="container" style="text-align: center !important;">
+                                            <b><small>
+                                                    <h5 class="text-primary">Case Details</h5>
+                                                </small></b>
+                                            <h6>OB Number </h6>
+                                            {{  caseDetails.caseid }}
+                                            <h6>Charges</h6>
+                                            {{ caseData.charges }}
+                                            <h6>Evidence</h6>
+                                            {{ caseData.evidence }}
+
+                                            <h6>Offense</h6>
+                                            {{  caseData.offense }}
+                                            <h6>Statement of the Case</h6>
+                                            {{  caseData.statement }}
+                                            <hr>
+                                            <span>
+
+                                                <h6 class="text-primary"><span
+                                                        class="text-secondary fa fa-suitcase"></span> &nbsp; Officer in
+                                                    Charge</h6>
+                                                {{  caseDetails.createdby }}
+                                            </span>
+                                            <hr>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="flip">
+            <div class="content">
+                <div class="front">
+                    <!--define the loop-->
+                    <h5>Complainant Details</h5>
+                    <div class="search">
+                            <input class="form-control icon text-info" type="text" 
+                            [(ngModel)]="searchComplainant" autocomplete="off" 
+                            placeholder="&#61442;  Start typing 'National ID' to Search ">
+                          </div>
+                          <br>
+                    <div *ngFor="let complainant of complainantDetails | filter: searchComplainant" class="card border-0 box-shadow rounded-0">
+                        <div class="card-header border-0 rounded-0 text-muted">
+                            <h5 class="mb-0">
+                            </h5>
+                            <div class="widget-controls">
+                            </div>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="media">
+                                <div class="d-flex flex-column justify-content-center">
+                                </div>
+                                <div class="media-body col-sm-12">
+                                        <br>
+                                        <span>
+                                            <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                                data-target="#collapseComplainants" aria-expanded="false"
+                                                aria-controls="collapseComplainants">
+                                               Click to view ({{complainant.casememberid}}) ID ({{ complainant.nationalid }})
+                                            </button>
+                                        </span>
+                                        <br>
+                                        <div class="row collapse" id="collapseComplainants">
+                                        <div class="container" style="text-align: center !important;">
+                                            <b><small>
+                                                    <h5 class="text-primary">Complainant ({{complainant.casememberid}})
+                                                    </h5>
+                                                </small></b>
+                                            <h6>Full Name</h6>
+                                            {{ complainant.name }}
+                                            <h6>National ID</h6>
+                                            {{ complainant.nationalid }}
+                                            <h6>Phone </h6>
+                                            {{  complainant.phonenumber }}
+                                            <h6>Email</h6>
+                                            {{  complainant.email }}
+                                            <h6>Age</h6>
+                                            {{  complainant.age }}
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <!-- <span class="pull-right"><button 
+                                        class="btn btn-danger btn-sm pull-right" (click)="removeMember()"><i class="fa fa-trash"></i> Remove Member</button></span> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-sm-4">
+        <div class="flip">
+            <div class="content">
+                <div class="front">
+                    <!--define the loop-->
+                    <h5>Defendant Details</h5>
+                    <div class="search">
+                            <input class="form-control icon text-info" type="text" 
+                            [(ngModel)]="searchDefendant" autocomplete="off" 
+                            placeholder="&#61442;   Start typing 'National ID' to Search">
+                          </div>
+                          <br>
+                    <div *ngFor="let defendant of defendantDetails | filter: searchDefendant">
+
+                        <!-- <button data-toggle="collapse" data-target="#defendant_details" aria-expanded="false"
+                            aria-controls="defendant_details" class="btn btn-info">View Details</button> -->
+                        <div class="card border-0 box-shadow rounded-0" id="defendant_details">
+                            <div class="card-header border-0 rounded-0 text-muted">
+                                <h5 class="mb-0">
+                                </h5>
+                                <div class="widget-controls">
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="media">
+                                    <div class="d-flex flex-column justify-content-center">
+                                    </div>
+                                    <div class="media-body col-sm-12">
+                                        <br>
+                                        <span>
+                                            <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                                data-target="#collapseExample" aria-expanded="false"
+                                                aria-controls="collapseExample">
+                                                Click to view ({{defendant.casememberid}}) ID ({{ defendant.nationalid }})
+                                            </button>
+                                        </span>
+                                        <br>
+                                        <div class="row collapse" id="collapseExample">
+
+                                            <div class="container"
+                                                style="text-align: center !important; height: 230px;">
+                                                <b><small>
+                                                        <h5 class="text-primary">Defendant ({{defendant.casememberid}})
+                                                        </h5>
+                                                    </small></b>
+                                                <h6>Full Name</h6>
+                                                {{ defendant.name }}
+                                                <h6>National ID</h6>
+                                                {{ defendant.nationalid }}
+                                                <h6>Phone </h6>
+                                                {{  defendant.phonenumber }}
+                                                <h6>Email</h6>
+                                                {{  defendant.email }}
+                                                <h6>Age</h6>
+                                                {{  defendant.age }}
+                                            </div>
+
+                                            <!-- <div class="col-sm-6" *ngIf="defendant.arrestdetails">
+                                                <div class="card border-0 box-shadow rounded-0" style="text-align: center !important;">
+                                                    <div *ngIf="defendant.arrestdetails.type"><b>
+                                                            {{defendant.arrestdetails.type}}</b></div>
+                                                    <div *ngIf="defendant.arrestdetails.cellid"><b> In cell
+                                                            {{ defendant.arrestdetails.cellid}}</b></div>
+                                                </div>
+                                            </div> -->
+
+                                        </div>
+
+
+
+                                        <hr>
+                                        <!-- <span class="pull-right"><button 
+                                            class="btn btn-danger btn-sm pull-right" (click)="removeMember()"><i class="fa fa-trash"></i> Remove Member</button></span>
+                                
+                                -->
+                                        <div *ngIf="!defendant.arrestdetails">
+                                            <span
+                                                (click)="applyBail($event.target.value, caseDetails.caseid, defendant.casememberid)"
+                                                class="pull-left">
+                                                <button class="btn btn-sm btn-outline-success"><i
+                                                        class="fa fa-diamond">&nbsp;</i>Apply Cash Bail</button></span>
+                                        </div>
+
+                                        <span *ngIf="!defendant.arrestdetails" class="pull-right"><button
+                                                class="btn btn-outline-info btn-sm pull-right"
+                                                (click)="bookToCell($event.target.value, defendant.casememberid, caseDetails.caseid)"><i
+                                                    class="fa fa-book"></i>&nbsp;Book Cell</button></span>
+                                        <span *ngIf="defendant.arrestdetails" class="pull-right">
+
+                                            <div class="dropdown">
+                                                <button class="btn btn-warning dropdown-toggle" type="button"
+                                                    data-toggle="dropdown"> <i class="fa fa-eye"></i> View status
+                                                    <span class="caret"></span></button>
+                                                <div class="dropdown-menu">
+                                                    <span class="text-danger" style="text-align: center !important;">
+
+                                                        <div *ngIf="defendant.arrestdetails.type"><b>
+                                                                {{defendant.arrestdetails.type}}</b></div>
+                                                        <div *ngIf="defendant.arrestdetails.cellid"><b>cell
+                                                                {{ defendant.arrestdetails.cellid}}</b></div>
+                                                    </span>
+
+                                                </div>
+                                            </div>
+                                        </span>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="bg-white text-center">
+            <pagination-controls autoHide="true" maxSize="3"></pagination-controls>
+        </div>
+    </div>
+</div>
+
+<ng-template #modalContent>
+    <div class="modal-body bg-gray">
+        <div class="row">
+            <div class="col-12 vertical-tabs">
+                <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="row px-3">
+                    <ul class="nav flex-column left col-3 border-0 rounded-0 mr-0 bg-light">
+                        <img *ngIf="user.profile.image" class="w-100" [src]="user.profile.image">
+                        <img *ngIf="!user.profile.image" class="w-100" src="assets/img/users/default-user.jpg">
+                        <li class="nav-item bg-light">
+                            <a class="nav-link active" href="#basic" data-toggle="tab">Basic</a>
+                        </li>
+                        <li class="nav-item bg-light">
+                            <a class="nav-link" href="#personal" data-toggle="tab">Personal</a>
+                        </li>
+                        <li class="nav-item bg-light">
+                            <a class="nav-link" href="#work" data-toggle="tab">Work</a>
+                        </li>
+                        <li class="nav-item bg-light">
+                            <a class="nav-link" href="#contacts" data-toggle="tab">Contacts</a>
+                        </li>
+                        <li class="nav-item bg-light">
+                            <a class="nav-link" href="#social" data-toggle="tab">Social life</a>
+                        </li>
+                        <li class="nav-item bg-light">
+                            <a class="nav-link" href="#settings" data-toggle="tab">Settings</a>
+                        </li>
+                    </ul>
+                    <div class="col-12 bg-white text-center py-1">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</ng-template>

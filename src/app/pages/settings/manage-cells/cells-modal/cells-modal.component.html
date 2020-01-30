@@ -1,0 +1,31 @@
+<div class="modal-header">
+  <h4 class="modal-title">Add Cell</h4>
+  <button type="button" class="close" class="fa fa-times" aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')">
+  </button>
+</div>
+<div class="modal-body">
+  <div class="card-body" [formGroup]="form">
+    <div class="form-group">
+      <label for="input-2">Cell Type</label>
+      <input type="celltype" formControlName="celltype" class="form-control" id="celltype">
+      <small class="text-danger"
+        *ngIf="form.get('celltype').touched && form.get('celltype').hasError('required')">Required
+        Field</small>
+    </div>
+    <div class="col-md-12">
+        <div *ngIf="loading" class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75"
+                aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+        </div>     
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-outline-primary" (click)="closeModal()">
+            Close
+          </button>&nbsp;
+      <button class="btn btn-outline-primary" (click)="submitCellType()">
+           Submit
+      </button>
+    </div>
+  </div>
+</div>

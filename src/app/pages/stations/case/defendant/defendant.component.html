@@ -1,0 +1,231 @@
+<h2>State</h2>
+
+<div class="row">
+    <div class="col">
+        <div widget class="card border-0 box-shadow">
+            <div class="card-header transparent border-0 text-muted">
+                <h5 class="mb-0"></h5>
+                <div class="widget-controls"> 
+                    <a data-widgster="expand" href="#" class="transition"><i class="fa fa-chevron-down"></i></a>
+                    <a data-widgster="collapse" href="#" class="transition"><i class="fa fa-chevron-up"></i></a>
+                    <a data-widgster="fullscreen" href="#" class="transition"><i class="fa fa-expand"></i></a>
+                    <a data-widgster="restore" href="#" class="transition"><i class="fa fa-compress"></i></a>                          
+                    <a data-widgster="close" href="#" class="transition"><i class="fa fa-times"></i></a>
+                </div>        
+            </div>
+            <div *ngIf="!confirmed" class="card-body widget-body">
+                <div class="row">
+                    <div *ngFor="let step of steps; let last = last" class="col-md-3 col-sm-6 col-12 step text-center">
+                        <div class="d-flex justify-content-center align-items-center text-white pl-2 pr-2 mb-2 rounded step-content" [class.bg-success]="step.valid" [class.bg-danger]="step.active" [class.confirmed]="confirmed">
+                            <i class="fa {{ step.icon }} mr-2" aria-hidden="true"></i>
+                            <span class="step-name">{{step.name}}</span> 
+                        </div>
+                    </div> 
+                </div>    
+                <div class="app-search d-none d-md-inline-block ml-3">
+                    <i class="fa fa-search"></i>
+                    <input type="text" placeholder="Type to search by ID..." class="form-control">
+                </div>             
+             
+                <div *ngFor="let step of steps" [hidden]="!step.active" class="col">
+                    <div class="row">
+                        <h4 class="mt-3 mb-3"><i class="fa {{ step.icon }}"></i> {{step.name}}</h4>
+                    </div>
+                        
+                    <div *ngIf="step.name=='PoliceID'" [formGroup]="complainantForm" class="row bg-light pt-2">
+
+                        <div class="form-group col-md-7" [ngClass]="{'has-danger' : step.hasError && complainantForm.get('policeid').hasError('required'), 'has-success' : !complainantForm.get('policeid').hasError('required') }">
+                            <label class="form-control-label">Police ID</label>
+                            <div class="input-group"> 
+                                <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-user-o"></i></span></div>  
+                                <input formControlName="policeid" class="form-control" [ngClass]="{'form-control-danger' :  complainantForm.get('policeid').hasError('required'), 'form-control-success' :  !complainantForm.get('policeid').hasError('required') }" type="text"> 
+                            </div>
+                            <small class="text-danger" *ngIf="step.hasError && complainantForm.get('policeid').hasError('required')">police ID is required</small>                             
+                        </div>
+
+                    </div>
+
+                    <div *ngIf="step.name=='Defendant'" [formGroup]="defendantForm" class="row bg-light pt-2">
+                            <div class="form-group col-md-2">
+                                <label class="form-control-label">Salutation seee</label>
+                                <select formControlName="salutation" class="form-control">
+                                    <option>Mr</option>
+                                    <option>Mrs</option>
+                                </select>
+                            </div>      
+    
+                            <div class="form-group col-md-5" [ngClass]="{'has-danger' : step.hasError && defendantForm.get('fullname').hasError('required'), 'has-success' : !defendantForm.get('fullname').hasError('required') }">
+                                <label class="form-control-label">Full Name</label>
+                                <input formControlName="fullname" class="form-control" [ngClass]="{'form-control-danger' :  defendantForm.get('fullname').hasError('required'), 'form-control-success' :  !defendantForm.get('fullname').hasError('required') }" type="text"> 
+                                <small class="text-danger" *ngIf="step.hasError && defendantForm.get('fullname').hasError('required')">First Name is required</small>                             
+                            </div>
+    
+                            <div class="form-group col-md-5" [ngClass]="{'has-danger' : step.hasError && defendantForm.get('idnumber').hasError('required'), 'has-success' : !defendantForm.get('idnumber').hasError('required') }">
+                                <label class="form-control-label">ID Number</label>
+                                <input formControlName="idnumber" class="form-control" [ngClass]="{'form-control-danger' :  defendantForm.get('idnumber').hasError('required'), 'form-control-success' :  !defendantForm.get('idnumber').hasError('required') }" type="number"> 
+                                <small class="text-danger" *ngIf="step.hasError && defendantForm.get('idnumber').hasError('required')">ID is required</small>                             
+                            </div>
+    
+                            <div class="form-group col-md-3">
+                                <label class="form-control-label">Gender</label>
+                                <select formControlName="gender" class="form-control">
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                </select>
+                            </div>
+    
+                            <div class="form-group col-md-5" [ngClass]="{'has-danger' : (step.hasError && defendantForm.get('email').hasError('required')) || (step.hasError && defendantForm.get('email').hasError('email')), 
+                                                                         'has-success' : !defendantForm.get('email').hasError('required') && !defendantForm.get('email').hasError('email')}">
+                                <label class="form-control-label">Contact email</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-envelope"></i></span></div>
+                                    <input formControlName="email" class="form-control" [ngClass]="{'form-control-danger' : (step.hasError && defendantForm.get('email').hasError('required')) || (step.hasError && defendantForm.get('email').hasError('email')), 
+                                                                                                    'form-control-success' :  !defendantForm.get('email').hasError('required') && !defendantForm.get('email').hasError('email')}" type="text">                      
+                                </div>
+                                <small class="text-danger" *ngIf="step.hasError && defendantForm.get('email').hasError('required')">Email is required</small>                              
+                                <small class="text-danger" *ngIf="step.hasError && defendantForm.get('email').hasError('email')">Invalid email address</small>
+                            </div>
+    
+                            <div class="form-group col-md-4" [ngClass]="{'has-danger' : step.hasError && defendantForm.get('phone').hasError('required'), 'has-success' : !defendantForm.get('phone').hasError('required') }">
+                                <label class="form-control-label">Phone</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-phone"></i></span></div>
+                                    <input formControlName="phone" class="form-control" [ngClass]="{'form-control-danger' :  defendantForm.get('phone').hasError('required'), 'form-control-success' :  !defendantForm.get('phone').hasError('required') }" type="number"> 
+                                </div>
+                                <small class="text-danger" *ngIf="step.hasError && defendantForm.get('phone').hasError('required')">Phone is required</small>                             
+                            </div>
+    
+                            <div class="form-group col-md-2" [ngClass]="{'has-danger' : step.hasError && defendantForm.get('age').hasError('required'), 'has-success' : !defendantForm.get('age').hasError('required') }">
+                                <label class="form-control-label">Age</label>
+                                <input formControlName="age" class="form-control" [ngClass]="{'form-control-danger' :  defendantForm.get('age').hasError('required'), 'form-control-success' :  !defendantForm.get('age').hasError('required') }" type="text"> 
+                                <small class="text-danger" *ngIf="step.hasError && defendantForm.get('age').hasError('required')">required</small>                             
+                            </div>
+    
+        
+                            <div class="form-group col-md-5" [ngClass]="{'has-danger' : step.hasError && complainantForm.get('county').hasError('required'), 'has-success' : !complainantForm.get('county').hasError('required') }">
+                                <label class="form-control-label">Select County</label>
+                                <select formControlName="county" class="form-control" [ngClass]="{'form-control-danger' : step.hasError && complainantForm.get('county').hasError('required'), 'form-control-success' : !complainantForm.get('county').hasError('required') }">
+                                        <option *ngFor="let county of counties" [value]="county.id">{{county.name}}</option>
+                                </select>
+                                <small class="text-danger" *ngIf="step.hasError && complainantForm.get('county').hasError('required')">county is required</small>                             
+                            </div>
+    
+                            <div class="form-group col-md-5" [ngClass]="{'has-danger' : step.hasError && defendantForm.get('subcounty').hasError('required'), 'has-success' : !defendantForm.get('subcounty').hasError('required') }">
+                                <label class="form-control-label">Select SubCounty </label>
+                                <select formControlName="subcounty" class="form-control">
+                                    <option *ngFor="let subcounty of subcounties" [value]="subcounty">{{subcounty}}</option>                                
+                                </select>
+                            </div>
+                            
+                            <div class="form-group col">
+                                <label class="form-control-label">Address</label>
+                                <!-- <textarea formControlName="address" class="form-control"></textarea> -->
+                            </div>                     
+                        </div>
+    
+                        <div *ngIf="step.name=='Case details'" [formGroup]="caseForm" class="row bg-light pt-2">
+                            <div class="form-group col-md-7" [ngClass]="{'has-danger' : step.hasError && caseForm.get('casetype').hasError('required'), 'has-success' : !caseForm.get('casetype').hasError('required') }">
+                                <label class="form-control-label">Case Type</label>
+                                <select formControlName="casetype" class="form-control" [ngClass]="{'form-control-danger' : step.hasError && caseForm.get('casetype').hasError('required'), 'form-control-success' : !caseForm.get('casetype').hasError('required') }">
+                                        <option>Criminal</option>
+                                        <option>Civil</option>
+                                </select>
+                                <small class="text-danger" *ngIf="step.hasError && caseForm.get('casetype').hasError('required')">Card Type is required</small>                             
+                            </div>
+    
+                            <div class="form-group col-md-7" [ngClass]="{'has-danger' : (step.hasError && caseForm.get('charges').hasError('required')) || (step.hasError && caseForm.get('charges').hasError('creditCard')), 
+                                                                         'has-success' : !caseForm.get('charges').hasError('required') && !caseForm.get('charges').hasError('creditCard')}">
+                                <label class="form-control-label">Charges</label>
+                                <input formControlName="charges" class="form-control" [ngClass]="{'form-control-danger' : (step.hasError && caseForm.get('charges').hasError('required')) || (step.hasError && caseForm.get('charges').hasError('creditCard')), 
+                                                                                                     'form-control-success' : !caseForm.get('charges').hasError('required') && !caseForm.get('charges').hasError('creditCard') }" type="text"> 
+                                <small class="text-danger" *ngIf="step.hasError && caseForm.get('charges').hasError('required')">Charges is required</small>                             
+                                <small class="text-danger" *ngIf="step.hasError && caseForm.get('charges').hasError('creditCard')">Invalid </small>
+                            </div> 
+                            <div class="form-group col-md-7" [ngClass]="{'has-danger' : step.hasError && caseForm.get('offence').hasError('required'), 'has-success' : !caseForm.get('offence').hasError('required') }">
+                                <label class="form-control-label">Particulars of offence</label>
+                                <textarea formControlName="offence" class="form-control" [ngClass]="{'form-control-danger' : step.hasError && caseForm.get('offence').hasError('required'), 'form-control-success' : !caseForm.get('offence').hasError('required') }"></textarea>
+                            </div> 
+    
+                            <div class="form-group col-md-7" [ngClass]="{'has-danger' : step.hasError && caseForm.get('offence').hasError('required'), 'has-success' : !caseForm.get('offence').hasError('required') }">
+                                    <label class="form-control-label">Particulars of Evidence</label>
+                                    <textarea formControlName="offence" class="form-control" [ngClass]="{'form-control-danger' : step.hasError && caseForm.get('offence').hasError('required'), 'form-control-success' : !caseForm.get('offence').hasError('required') }"></textarea>
+                            </div> 
+    
+                            <div class="form-group col-md-7">
+                                <div class="input-group file-upload">
+                                    <input type="file" (change)="fileChange(input)" #input class="file-upload-btn"/>
+                                    <input type="text" class="form-control" formControlName="complainantStatement" placeholder="Attach Complainant statement" value="{{file}}">
+                                    <i class="fa fa-times delete-file" (click)="removeFile()" *ngIf="file"></i>
+                                    <span class="input-group-append">
+                                        <button class="btn btn-primary" type="button"><i class="fa fa-upload"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+    
+                            <div class="form-group col-md-7">
+                                <div class="input-group file-upload">
+                                    <input type="file" (change)="fileChange(input)" #input class="file-upload-btn"/>
+                                    <input type="text" class="form-control" formControlName="defendantStatement" placeholder="Attach Defendant statement" value="{{file}}">
+                                    <i class="fa fa-times delete-file" (click)="removeFile()" *ngIf="file"></i>
+                                    <span class="input-group-append">
+                                        <button class="btn btn-primary" type="button"><i class="fa fa-upload"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+    
+                            <div class="form-group col-md-7">
+                                <div class="input-group file-upload">
+                                    <input type="file" (change)="fileChange(input)" #input class="file-upload-btn"/>
+                                    <input type="text" class="form-control" formControlName="witnessStatement" placeholder="Attach witness statement" value="{{file}}">
+                                    <i class="fa fa-times delete-file" (click)="removeFile()" *ngIf="file"></i>
+                                    <span class="input-group-append">
+                                        <button class="btn btn-primary" type="button"><i class="fa fa-upload"></i></button>
+                                    </span>
+                                </div>
+                            </div>
+    
+                            <!-- <input type="file" (change)="fileChange(input)" #input class="img-upload-btn"/> -->
+    
+                                <div class="image-wrapper col-md-7">
+                                    <i *ngIf="image" class="fa fa-times delete-img" (click)="removeImage()"></i>
+                                    <img [attr.src]="image" *ngIf="image" width="100%">
+                                    <img src="assets/img/app/img.jpg" *ngIf="!image" width="100%">
+                                </div>
+                            <hr>
+                                <button class="btn btn-info btn-block rounded-0 col-md-7" type="button">
+                                        <span *ngIf="!image"><i class="fa fa-upload"></i> Capture fingerprints </span>
+                                        <span *ngIf="image"> Recapture fingerprints </span>
+                                </button>
+    
+                        </div>
+
+                </div> 
+
+                <div class="row mt-3"> 
+                    <div class="col">
+                        <button class="btn btn-primary pull-left" (click)="prev()"><i class="fa fa-chevron-left arrow"></i>&nbsp; Prev Step</button>
+                        <button *ngIf="!steps[steps.length-1].active" class="btn btn-primary pull-right" (click)="next()">Next Step &nbsp;<i class="fa fa-chevron-right arrow"></i></button>
+                        <button *ngIf="steps[steps.length-1].active" class="btn btn-primary pull-right" (click)="confirm()">Confirm &nbsp;<i class="fa fa-check arrow"></i></button>
+                    </div> 
+                </div>         
+
+            </div>
+
+            <div *ngIf="confirmed" class="card-body widget-body">
+               
+                <div class="col bg-light p-5">
+                    <div class="d-flex justify-content-center align-items-center flex-column bg-light confirmed-content">
+                        <i class="fa fa-check text-success" aria-hidden="true"></i>
+                        <h2 class="p-3">Booking Successful!</h2>
+                        <h5 class="p-3">OB number is: OB/2019/1089</h5>
+                        <p class="p-2">You will receive an email confirmation shortly</p>
+                        <i class="fa fa-print text-muted" aria-hidden="true"></i>
+                        <p class="p-2">View All OB Records</p>
+                    </div>
+                </div>           
+
+            </div>  
+
+        </div>
+    </div>
+</div>

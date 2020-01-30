@@ -1,0 +1,28 @@
+<div class="row">
+    
+            <div widget class="card border-0 box-shadow">
+                    <div class="input-group mb-3 box-shadow">
+                            <div class="input-group-append col-md-offset-8">
+                                <span class="input-group-text border-top-0 border-right-0 border-bottom-0">
+                                    <button class="btn btn-md btn-default disabled"><b class="text-primary">Arrested Members List</b></button>
+                                </span>
+                                
+                                <span class="input-group-text border-top-0 border-right-0 border-bottom-0"><i
+                                        class="fa fa-th"></i></span>
+                                <span class="input-group-text border-top-0 border-right-0 border-bottom-0"><i
+                                        class="fa fa-list"></i></span>
+                            </div>
+                        </div>
+                    <div class="card-header transparent border-0 text-muted">
+                    </div>
+                    <div class="card-body pt-0 widget-body">
+                        <div class="table-responsive">
+                            <ng2-smart-table class="table table-hover" [settings]="settings" [source]="arrestedSet"
+                                (deleteConfirm)="onDeleteConfirm($event)" (rowSelect)="onRowSelect($event)"
+                                (userRowSelect)="onUserRowSelect($event)" (custom)="onCustomAction($event)"
+                                (rowHover)="onRowHover($event)"></ng2-smart-table>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    

@@ -1,0 +1,15 @@
+input.icon {
+    padding:5px;
+}
+input.icon::-webkit-input-placeholder {
+    font-family:'FontAwesome';
+    color: #428bca;
+    font-weight: bold;
+    
+}
+input.icon::-moz-placeholder {
+    font-family:'FontAwesome';
+}
+input.icon::-ms-input-placeholder {
+    font-family:'FontAwesome';
+}

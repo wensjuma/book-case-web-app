@@ -1,0 +1,67 @@
+<div class="d-flex justify-content-center align-items-center w-100 h-100 login-container">
+    <div class="col-xl-4 col-md-6 col-10">
+        <div class="card border-0 box-shadow rounded-0">
+          
+               
+                <div class="card-header d-flex justify-content-center align-items-center border-0 box-shadow">
+                        <img class="img" src="assets/img/app/kenya-police.jpeg" />
+                    </div>
+               
+
+            <div class="card-body text-center pb-1">
+                <h2>login</h2>
+                <!-- <a routerLink="/register" class="transition">Don't have an account? Sign up now!</a> -->
+
+                <form [formGroup]="form" (ngSubmit)="onSubmit()" class="text-left mt-4">
+                    <div class="form-group">
+                        <input formControlName="email" class="form-control validation-field" placeholder="email or login ID" type="text" autocomplete="email">                      
+                        <small class="text-danger" *ngIf="form.get('email').touched && form.get('email').hasError('required')">email required</small>                              
+                        <small class="text-danger" *ngIf="form.get('email').touched && form.get('email').hasError('email')">Invalid login ID</small>
+                    </div>
+                    <div class="form-group">
+                        <input formControlName="password" class="form-control validation-field" placeholder="Password" type="password" autocomplete="email">
+                        <small class="text-danger" *ngIf="form.get('password').touched && form.get('password').hasError('required')">Password is required</small>                              
+                        <small class="text-danger" *ngIf="form.get('password').touched && form.get('password').hasError('minlength')">Password isn't long enough, minimum of 6 characters</small>
+                    </div>
+                    <div class="text-danger text-center" *ngIf="errorMessage">
+                        <b>{{ errorMessage }}</b> </div>
+
+                    <div class="form-group d-flex justify-content-between">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="login-checkbox">
+                            <label class="custom-control-label" for="login-checkbox">Keep me signed in.</label>
+                        </div>
+                        <a class="transition pull-right" href="javascript:void(0);">Forgot password?</a>                     
+                    </div>
+                    <div class="form-group">
+                        <button [disabled]="!form.valid" class="btn btn-block" type="submit">Sign in</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center bg-transparent">
+                <!-- <ul class="list-inline mb-0">
+                    <li class="list-inline-item">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-square-o fa-stack-2x"></i>
+                            <i class="fa fa-facebook fa-stack-1x"></i>
+                        </span>
+                    </li>
+                    <li class="list-inline-item">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-square-o fa-stack-2x"></i>
+                            <i class="fa fa-twitter fa-stack-1x"></i>
+                        </span>
+                    </li>
+                    <li class="list-inline-item">
+                        <span class="fa-stack fa-lg">
+                            <i class="fa fa-square-o fa-stack-2x"></i>
+                            <i class="fa fa-google fa-stack-1x"></i>
+                        </span>
+                    </li>
+                </ul> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+       

@@ -1,0 +1,51 @@
+[
+    {
+        "clerkId": 145795,
+        "fullName": "Mark Oto",
+        "court": "Milimani court",
+        "email": "mdo@gmail.com",
+        "phoneNumber": "0702457896",
+        "idNo": "45784512"
+      },
+      {
+        "clerkId": 485961,
+        "fullName": "Eric Sam",
+        "court": "Supreme court",
+        "email": "sam@gmail.com",
+        "phoneNumber": "0702478896",
+        "idNo": "45678925"
+      },
+      {
+        "clerkId": 485961,
+        "fullName": "Eric Sam",
+        "court": "Thika courts",
+        "email": "sam@gmail.com",
+        "phoneNumber": "0702478896",
+        "idNo": "45678925"
+      },
+      {
+        "clerkId": 485961,
+        "fullName": "Eric Sam",
+        "court": "Kiambu court",
+        "email": "sam@gmail.com",
+        "phoneNumber": "0702478896",
+        "idNo": "45678925"
+      },
+      {
+        "clerkId": 485961,
+        "fullName": "Eric Sam",
+        "court": "Makadara court",
+        "email": "sam@gmail.com",
+        "phoneNumber": "0702478896",
+        "idNo": "45678925"
+      },
+      {
+        "clerkId": 485961,
+        "fullName": "Eric Sam",
+        "court": "kasarani court",
+        "email": "sam@gmail.com",
+        "phoneNumber": "0702478896",
+        "idNo": "45678925"
+      }
+      
+]

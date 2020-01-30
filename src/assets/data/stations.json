@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "umoja II Police Station",
+        "county": "Nairobi",
+        "subcounty": "Embakasi west",
+        "location": "umoja"
+    },
+    {
+        "id": 2,
+        "name": "Mowlem Police Station",
+        "county": "Nairobi",
+        "subcounty": "Embakasi West",
+        "location": "umoja"
+    },
+    {
+        "id": 3,
+        "name": "Kasarani Police Station",
+        "county": "Nairobi",
+        "subcounty": "Embakasi North",
+        "location": "Kasarani"
+    },
+    {
+        "id": 4,
+        "name": "Kayole Police Station",
+        "county": "Nairobi",
+        "subcounty": "Embakasi Central",
+        "location": "Kayole"
+    },
+    {
+        "id": 5,
+        "name": "Central Police Station",
+        "county": "Nairobi",
+        "subcounty": "Starehe",
+        "location": "CBD"
+    },
+    {
+        "id": 6,
+        "name": "Westlands Police Station",
+        "county": "Nairobi",
+        "subcounty": "Westlands",
+        "location": "westlands"
+    }
+]

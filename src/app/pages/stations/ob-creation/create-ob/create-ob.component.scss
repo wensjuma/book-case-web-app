@@ -1,0 +1,42 @@
+.step{
+    .step-content{
+        background: #b9b9b9;
+        height: 40px;
+        font-size: 1.5rem;
+        .step-name{
+            font-size: 14px;
+        }
+        &.confirmed{
+            background-color: #4BAE4F !important;
+        }
+    }
+}
+
+.confirmed-content{
+    .fa-check{
+        font-size: 120px;        
+    }
+    .fa-print{
+        font-size: 24px;
+    }
+}
+input.icon {
+    padding:5px;
+}
+input.icon::-webkit-input-placeholder {
+    font-family:'FontAwesome';
+    color: #de1359
+}
+input.icon::-moz-placeholder {
+    font-family:'FontAwesome';
+}
+input.icon::-ms-input-placeholder {
+    font-family:'FontAwesome';
+}
+.swal-wide{
+    width:300px !important;
+    height:300px !important;
+}
+.ob_success{
+    text-align: center;
+}

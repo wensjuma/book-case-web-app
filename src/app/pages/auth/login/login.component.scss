@@ -1,0 +1,27 @@
+.login-container{
+    position: absolute;
+    .card{
+        .card-header{
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            margin-top: -40px;
+            border-radius: 50%;
+            font-size: 36px;
+        }
+        .card-container{
+            background-color: burlywood;
+            border-radius: 5px;
+            box-shadow: 5px 5px 4px;
+        }
+    }
+}
+img{
+    height:80px;
+    width:130px;
+    border-radius: 50%;
+}
+
+ .btn-block {
+    background-color: #003399 !important;
+}
